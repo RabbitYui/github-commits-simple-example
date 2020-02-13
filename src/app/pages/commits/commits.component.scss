@@ -1,0 +1,49 @@
+
+.commits-wrapper {
+  width: 100%;
+  height: auto;
+
+  .branch-switcher {
+    .switcher-button {
+      padding: 3px 10px;
+      font-size: 12px;
+      line-height: 20px;
+      background-color: #eff3f6;
+      background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+      cursor: pointer;
+      border: 1px solid rgba(27,31,35,.2);
+      background-size: 110% 110%;
+      box-shadow: none;
+      font-weight: 500;
+      border-radius: .25em;
+      text-align: center;
+      &:focus {
+        box-shadow: 0 0 0 .2em rgba(3,102,214,.3);
+      }
+      &:hover {
+        background-color: #e6ebf1;
+        background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
+        background-position: -.5em;
+        border-color: rgba(27,31,35,.35);
+      }
+      span {
+        display: inline-block;
+        opacity: .75;
+        color: #24292e;
+        outline: none;
+      }
+      .active-branch {
+        margin-left: 2px;
+        font-weight: 600;
+        max-width: 125px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        opacity: 1;
+      }
+      .arrow {
+        color: #24292e;
+        outline: none;
+      }
+    }
+  }
+}
