@@ -1,0 +1,28 @@
+
+.commits-section-wrapper {
+  width: 100%;
+  padding-left: 39px;
+  margin-bottom: 15px;
+  .section-date {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .commits-stack {
+    border: 1px solid #e1e4e8;
+
+  }
+}
+
+.octicon {
+  display: inline-block;
+  color: #c6cbd1;
+  position: absolute;
+  left: 0;
+  top: 0.1em;;
+  background-color: #fff;
+}
+
+.relative {
+  position: relative;
+}
