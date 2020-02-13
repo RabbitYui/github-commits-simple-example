@@ -13,3 +13,14 @@ body {
 * {
   box-sizing: border-box;
 }
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+.mat-button-toggle-appearance-standard {
+  .mat-button-toggle-label-content {
+    line-height: 0 !important;
+    padding: 0 !important;
+  }
+}

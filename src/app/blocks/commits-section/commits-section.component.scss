@@ -10,7 +10,12 @@
 
   .commits-stack {
     border: 1px solid #e1e4e8;
-
+    .single-commit {
+      border-bottom: 1px solid #e1e4e8;
+      &:last-child {
+        border: none;
+      }
+    }
   }
 }
 

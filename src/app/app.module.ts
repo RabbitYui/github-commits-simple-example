@@ -11,6 +11,8 @@ import { FlexModule } from '@angular/flex-layout';
 import { CommitsComponent } from './pages/commits/commits.component';
 import { CommitsSectionComponent } from './blocks/commits-section/commits-section.component';
 import { MatIconModule } from '@angular/material/icon';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonToggleModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

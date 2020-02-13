@@ -1,4 +1,124 @@
+@import "src/assets/styles/global-variables";
+
 .commit-wrapper {
   width: 100%;
   height: 100%;
+  padding: 8px 10px;
+  &:hover {
+    background-color: #f6fbff;
+  }
 }
+
+.header {
+  h3 {
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: #444d56;
+    a {
+      text-decoration: none;
+      color: #444d56;
+    }
+    .more {
+      margin-left: 5px;
+      background-color: #dfe2e5;
+      border-radius: 1px;
+      height: 12px;
+      padding: 0 5px 5px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 6px;
+      cursor: pointer;
+      display: inline-block;
+      vertical-align: middle;
+      &:hover {
+        background-color: #c6cbd1;
+      }
+      &:active {
+        color: #fff;
+        background-color: #2188ff;
+      }
+    }
+  }
+
+  .commit-info {
+    font-size: 12px;
+    .avatars {
+      height: 20px;
+      min-width: 36px;
+      position: relative;
+      .avatars-body {
+        position: absolute;
+        display: flex;
+        .avatar {
+          width: 20px;
+          height: 20px;
+          position: relative;
+          display: flex;
+          box-sizing: initial;
+          margin-right: -11px;
+          background-color: #fff;
+          border-right: 1px solid #fff;
+          border-radius: 2px;
+          transition: margin .1s ease-in-out;
+          overflow: hidden;
+          line-height: 1;
+          outline: none;
+          &:hover {
+            margin-right: 3px;
+          }
+          &:first-child {
+            z-index: 3;
+          }
+        }
+      }
+    }
+    .users-info {
+      .check {
+        font-size: 12px;
+        color: #28a745;
+      }
+      .name {
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.action-btns {
+  .btn-group {
+    margin-right: 5px;
+  }
+  .btn {
+    color: #0366d6;
+    background-color: #fff;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 12px;
+    &:nth-child(1) {
+      border-right: none;
+    }
+    &:focus {
+      border-color: #0366d6;
+      box-shadow: 0 0 0 .2em rgba(3,102,214,.4);
+      outline: none;
+    }
+    &:hover {
+      border-color: #0366d6;
+      background-color: #0366d6;
+      color: #fff;
+    }
+  }
+  .action-btn {
+    border-radius: 3px;
+    text-align: center;
+    border: 1px solid rgba(27,31,35,.2);
+  }
+  .keyboard-arrow {
+    height: 14px;
+    width: 14px;
+    font-size: 14px;
+  }
+}
+
+
