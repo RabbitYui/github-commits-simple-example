@@ -20,6 +20,10 @@ export class CommitsComponent implements OnInit {
     dialogConfig.maxHeight = 480;
     dialogConfig.backdropClass = 'backdrop-no-bg';
     dialogConfig.panelClass = 'modal-no-padding';
+    dialogConfig.position = {
+      top: '12%',
+      left: '9%'
+    };
 
     const dialogRef = this.dialog.open(SwitchBranchModalComponent, dialogConfig);
   }
