@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommitsSectionComponent implements OnInit {
 
-  showMore = false;
   constructor() { }
 
   ngOnInit(): void {

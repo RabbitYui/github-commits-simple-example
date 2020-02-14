@@ -1,7 +1,7 @@
 <div class="commit-wrapper" fxLayout="column">
   <div class="top-section" fxLayout="row" fxLayoutAlign="space-between start">
     <div class="header">
-      <h3><a href="">fix(ivy): error if directive with synthetic property binding is on sa…</a> <span class="more">...</span></h3>
+      <h3><a href="">fix(ivy): error if directive with synthetic property binding is on sa…</a> <span class="more" (click)="checkMore()">...</span></h3>
       <div class="commit-info" fxLayout="row" fxLayoutAlign="start">
         <div class="avatars">
           <div class="avatars-body">
@@ -30,7 +30,7 @@
             </path>
           </svg>
         </mat-button-toggle>
-        <mat-button-toggle class="btn">d6bc63f</mat-button-toggle>
+        <mat-button-toggle class="btn"><a href="">d6bc63f</a></mat-button-toggle>
       </mat-button-toggle-group>
       <a mat-flat-button class="btn action-btn">
         <svg class="octicon octicon-code" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true" fill="currentColor">
@@ -40,5 +40,17 @@
       </a>
     </div>
   </div>
-  <div class="bottom-section"></div>
+  <div class="bottom-section" *ngIf="showMore">
+    <pre class="text-small">
+…me node as directive that injects ViewContainerRef (<a class="link" href="">#35343</a>)
+
+In the `loadRenderer` we make an assumption that the value will always be an
+`LView`, but if there's a directive on the same node which injects
+`ViewContainerRef` the `LView` will be wrapped in an `LContainer`. These changes add a
+call to unwrap the value before we try to read the value off of it.
+
+<span class="key-word">Fixes <a class="link" href="">#35343</a></span>
+PR <span class="key-word">Close <a class="link" href="">#35343</a></span>
+    </pre>
+  </div>
 </div>

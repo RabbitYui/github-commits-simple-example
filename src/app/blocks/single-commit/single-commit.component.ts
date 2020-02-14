@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SingleCommitComponent implements OnInit {
 
+  showMore = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  checkMore() {
+    if (this.showMore) {
+      this.showMore = false;
+    } else {
+      this.showMore = true;
+    }
+  }
 }

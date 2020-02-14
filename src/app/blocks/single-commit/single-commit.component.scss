@@ -95,6 +95,7 @@
     font-weight: 600;
     line-height: 20px;
     padding: 6px 12px;
+    cursor: pointer;
     &:nth-child(1) {
       border-right: none;
     }
@@ -107,6 +108,13 @@
       border-color: #0366d6;
       background-color: #0366d6;
       color: #fff;
+      a {
+        color: #fff;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: #0366d6;
     }
   }
   .action-btn {
@@ -121,4 +129,26 @@
   }
 }
 
+.bottom-section {
+  font-family: Liberation Mono, monospace;
+  text-align: left;
+  margin-bottom: 10px;
+  .text-small {
+    max-width: 700px;
+    font-size: 12px;
+    white-space: pre-wrap;
+    line-height: 1.45;
+  }
+}
 
+.link {
+  color: #0366d6;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+  min-width: 0 !important;
+}
