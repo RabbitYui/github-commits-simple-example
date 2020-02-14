@@ -1,0 +1,67 @@
+
+.modal-window {
+  border: 1px solid #d1d5da;
+  font-size: 12px;
+  background-color: #f6f8fa;
+  .header {
+    border-bottom: 1px solid #d1d5da;
+    padding: 8px 16px;
+    font-weight: 600;
+  }
+  .search {
+    width: 100%;
+    padding: 8px;
+    input {
+      width: 100%;
+      font-size: 14px;
+    }
+  }
+}
+
+.form-control {
+  min-height: 34px;
+  padding: 6px 8px;
+  line-height: 20px;
+  color: #24292e;
+  border: 1px solid  #d1d5da;
+  border-radius: 3px;
+  outline: none;
+  box-shadow: inset 0 1px 2px  rgba(27,31,35,.075);
+  background-color: #fff;
+  &:focus {
+    border-color: #2188ff;
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(27,31,35,.075),0 0 0 .2em rgba(3,102,214,.3);
+  }
+}
+
+mat-tab-group::ng-deep {
+  .mat-tab-labels {
+    padding: 0 8px;
+  }
+
+  .mat-tab-header {
+    //border-bottom: none;
+    overflow: auto;
+  }
+
+  .mat-tab-label {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    min-width: 0;
+    height: auto;
+    padding: 4px 16px;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .mat-tab-label-active {
+    background-color: #fff;
+    border: 1px solid #d1d5da;
+    border-bottom: none;
+  }
+
+  .mat-ink-bar {
+    display: none;
+  }
+}

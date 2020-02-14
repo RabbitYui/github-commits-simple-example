@@ -17,9 +17,9 @@
       font-weight: 500;
       border-radius: .25em;
       text-align: center;
-      &:focus {
-        box-shadow: 0 0 0 .2em rgba(3,102,214,.3);
-      }
+      //&:focus {
+      //  box-shadow: 0 0 0 .2em rgba(3,102,214,.3);
+      //}
       &:hover {
         background-color: #e6ebf1;
         background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);

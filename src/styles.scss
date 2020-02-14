@@ -26,4 +26,12 @@ h1, h2, h3, p {
   }
 }
 
+.backdrop-no-bg {
+  background: none;
+}
 
+.modal-no-padding {
+  mat-dialog-container {
+    padding: 0;
+  }
+}

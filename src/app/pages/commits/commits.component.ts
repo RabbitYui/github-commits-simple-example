@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {SwitchBranchModalComponent} from '../../modals/switch-branch-modal/switch-branch-modal.component';
 
 @Component({
   selector: 'app-commits',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommitsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  openDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.minWidth = 300;
+    dialogConfig.maxHeight = 480;
+    dialogConfig.backdropClass = 'backdrop-no-bg';
+    dialogConfig.panelClass = 'modal-no-padding';
+
+    const dialogRef = this.dialog.open(SwitchBranchModalComponent, dialogConfig);
+  }
 }

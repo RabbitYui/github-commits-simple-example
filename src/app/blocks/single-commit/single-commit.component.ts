@@ -14,7 +14,7 @@ export class SingleCommitComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  checkMore() {
+  checkMore(): void {
     if (this.showMore) {
       this.showMore = false;
     } else {
