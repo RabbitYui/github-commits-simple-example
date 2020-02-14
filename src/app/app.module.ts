@@ -15,6 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { SwitchBranchModalComponent } from './modals/switch-branch-modal/switch-branch-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
+import { BranchTagsListComponent } from './blocks/branch-tags-list/branch-tags-list.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     SingleCommitComponent,
     CommitsComponent,
     CommitsSectionComponent,
-    SwitchBranchModalComponent
+    SwitchBranchModalComponent,
+    BranchTagsListComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatButtonToggleModule,
     MatButtonModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent],
