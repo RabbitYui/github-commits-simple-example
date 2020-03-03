@@ -17,6 +17,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BranchTagsListComponent } from './blocks/branch-tags-list/branch-tags-list.component';
 import { MatListModule } from '@angular/material/list';
+import { NgxsModule } from '@ngxs/store';
+import { CommitsState } from './store/state/commits.state';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,7 @@ import { MatListModule } from '@angular/material/list';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexModule,
@@ -38,7 +42,8 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     MatDialogModule,
     MatTabsModule,
-    MatListModule
+    MatListModule,
+    NgxsModule.forRoot([CommitsState])
   ],
   providers: [],
   bootstrap: [AppComponent],
