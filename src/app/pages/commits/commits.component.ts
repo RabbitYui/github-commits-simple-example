@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SwitchBranchModalComponent } from '../../modals/switch-branch-modal/switch-branch-modal.component';
-import {Select, Store} from '@ngxs/store';
-import {CommitsState} from '../../store/state/commits.state';
-import {Observable} from 'rxjs';
-import {BranchModel} from '../../models/branch.model';
-import {FetchBranches} from '../../store/actions/commits.actions';
-import {withLatestFrom} from 'rxjs/operators';
-import {Router} from '@angular/router';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { BranchModel } from '../../models/branch.model';
+import { FetchBranches, FetchCommits } from '../../store/actions/commits.actions';
+import { withLatestFrom } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { CommitModel } from '../../models/commit.model';
 
 @Component({
   selector: 'app-commits',
@@ -17,6 +17,7 @@ import {Router} from '@angular/router';
 export class CommitsComponent implements OnInit {
 
   @Select(state => state.commits.branches) branches$: Observable<BranchModel[]>;
+  @Select(state => state.commits.commits) commits$: Observable<CommitModel[]>;
   currentBranch: BranchModel;
 
   constructor(private dialog: MatDialog,
@@ -48,10 +49,22 @@ export class CommitsComponent implements OnInit {
       withLatestFrom(this.branches$)
     ).subscribe(([branches]) => {
       this.currentBranch = branches.commits.branches[0];
-      this.router.navigate(['/commits', this.currentBranch.commit.sha]).then();
+      this.router.navigate(['/commits', this.currentBranch.commit.sha]).then(() => {
+        this.fetchCommits(this.currentBranch.commit.sha);
+      });
     },
     error => console.log(error)
     );
+  }
+
+  fetchCommits(sha: string) {
+    this.store.dispatch(new FetchCommits(sha)).pipe(
+      withLatestFrom(this.commits$))
+      .subscribe(([commits]) => {
+        console.log(commits);
+      },
+        error => console.log(error)
+      );
   }
 
   routerSubscriber() {

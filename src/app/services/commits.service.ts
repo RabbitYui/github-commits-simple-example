@@ -13,7 +13,7 @@ export class CommitsService {
 
   constructor(private http: HttpClient) { }
 
-  getCommits(): Observable<any> {
-   return this.http.get(this.GET_REPO + '/commits');
+  getCommits(branchSha: string): Observable<any> {
+   return this.http.get(this.GET_REPO + '/commits', {params: {sha: branchSha}});
   }
 }

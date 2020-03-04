@@ -48,8 +48,8 @@ export class CommitsState {
               private branchesService: BranchesService) {}
 
   @Action(FetchCommits)
-  fetchCommits(ctx: StateContext<CommitsStateModel>) {
-    return this.commitsService.getCommits().pipe(
+  fetchCommits(ctx: StateContext<CommitsStateModel>, { payload }) {
+    return this.commitsService.getCommits(payload).pipe(
       catchError((x, caught) => {
         console.log('inside catchErrorCommits', x);
         return throwError(x);
