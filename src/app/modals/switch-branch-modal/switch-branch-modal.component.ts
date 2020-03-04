@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { BranchModel } from '../../models/branch.model';
 
 @Component({
   selector: 'app-switch-branch-modal',

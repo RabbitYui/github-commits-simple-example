@@ -1,22 +1,18 @@
 
 <div class="branch-list-wrapper">
   <mat-list role="list">
-    <mat-list-item class="list-item default" role="listitem">
-      <a href="">
-        <mat-icon class="check">check</mat-icon>
+    <mat-list-item class="list-item " role="listitem">
+      <div>
         master
         <span class="default-label">default</span>
-      </a>
+      </div>
     </mat-list-item>
-    <mat-list-item class="list-item" role="listitem"><a href="">2.0.x</a></mat-list-item>
-    <mat-list-item class="list-item" role="listitem"><a href="">2.0.x</a></mat-list-item>
-    <mat-list-item class="list-item" role="listitem"><a href="">2.0.x</a></mat-list-item>
-    <mat-list-item class="list-item" role="listitem"><a href="">2.0.x</a></mat-list-item>
-    <mat-list-item class="list-item" role="listitem"><a href="">2.0.x</a></mat-list-item>
-    <mat-list-item class="list-item" role="listitem"><a href="">2.0.x</a></mat-list-item>
-    <mat-list-item class="list-item" role="listitem"><a href="">2.0.x</a></mat-list-item>
-    <mat-list-item class="list-item" role="listitem"><a href="">2.0.x</a></mat-list-item>
-    <mat-list-item class="list-item" role="listitem"><a href="">2.0.x</a></mat-list-item>
-    <mat-list-item class="list-item" role="listitem"><a href="">2.0.x</a></mat-list-item>
+    <mat-list-item class="list-item" role="listitem" *ngFor="let branch of branches$ | async"
+                   [ngClass]="branch.commit.sha === currentBranch.commit.sha? 'default': ''">
+      <div [routerLink]="['/commits', branch.commit.sha]" (click)="switchActiveBranch(branch.commit.sha)">
+        <mat-icon *ngIf="branch.commit.sha === currentBranch.commit.sha" class="check">check</mat-icon>
+        {{branch.name}}
+      </div>
+    </mat-list-item>
   </mat-list>
 </div>

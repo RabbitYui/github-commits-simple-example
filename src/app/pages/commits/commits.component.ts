@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {BranchModel} from '../../models/branch.model';
 import {FetchBranches} from '../../store/actions/commits.actions';
 import {withLatestFrom} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-commits',
@@ -15,13 +16,16 @@ import {withLatestFrom} from 'rxjs/operators';
 })
 export class CommitsComponent implements OnInit {
 
-  @Select(state => state.catalog.branches) branches$: Observable<BranchModel[]>;
+  @Select(state => state.commits.branches) branches$: Observable<BranchModel[]>;
+  currentBranch: BranchModel;
 
   constructor(private dialog: MatDialog,
-              private store: Store) { }
+              private store: Store,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.fetchBranches();
+    this.routerSubscriber();
   }
 
   openDialog(): void {
@@ -34,6 +38,7 @@ export class CommitsComponent implements OnInit {
       top: '12%',
       left: '9%'
     };
+    dialogConfig.data = this.currentBranch;
 
     const dialogRef = this.dialog.open(SwitchBranchModalComponent, dialogConfig);
   }
@@ -42,10 +47,21 @@ export class CommitsComponent implements OnInit {
     this.store.dispatch(new FetchBranches()).pipe(
       withLatestFrom(this.branches$)
     ).subscribe(([branches]) => {
-      console.log('branch list:');
-      console.log(branches);
+      this.currentBranch = branches.commits.branches[0];
+      this.router.navigate(['/commits', this.currentBranch.commit.sha]).then();
     },
     error => console.log(error)
     );
+  }
+
+  routerSubscriber() {
+    this.router.events.subscribe((event) => {
+      if (event) {
+        const sha = this.router.url.split('/')[2];
+        this.branches$.subscribe(branches => {
+          this.currentBranch = branches.find(branch => branch.commit.sha === sha);
+        });
+      }
+    });
   }
 }

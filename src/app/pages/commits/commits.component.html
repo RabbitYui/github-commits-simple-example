@@ -2,7 +2,7 @@
   <div class="branch-switcher">
     <button class="switcher-button" fxLayoutAlign="start center" (click)="openDialog()">
       <span>Branch:</span>
-      <span class="active-branch">master</span>
+      <span *ngIf="currentBranch" class="active-branch">{{currentBranch.name}}</span>
       <mat-icon class="arrow" aria-hidden="true" aria-label="dropdown caret">arrow_drop_down</mat-icon>
     </button>
   </div>
