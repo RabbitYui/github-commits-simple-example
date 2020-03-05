@@ -1,4 +1,4 @@
-import {Action, Selector, State, StateContext} from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { CommitsService } from '../../services/commits.service';
 import { FetchBranches, FetchCommits } from '../actions/commits.actions';
 import { catchError, tap } from 'rxjs/operators';

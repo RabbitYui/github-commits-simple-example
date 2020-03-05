@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SwitchBranchModalComponent } from '../../modals/switch-branch-modal/switch-branch-modal.component';
 import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import {from, Observable} from 'rxjs';
 import { BranchModel } from '../../models/branch.model';
 import { FetchBranches, FetchCommits } from '../../store/actions/commits.actions';
-import { withLatestFrom } from 'rxjs/operators';
+import { groupBy, mergeMap, toArray, withLatestFrom } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { CommitModel } from '../../models/commit.model';
 
@@ -19,6 +19,7 @@ export class CommitsComponent implements OnInit {
   @Select(state => state.commits.branches) branches$: Observable<BranchModel[]>;
   @Select(state => state.commits.commits) commits$: Observable<CommitModel[]>;
   currentBranch: BranchModel;
+  sortedCommits$: any;
 
   constructor(private dialog: MatDialog,
               private store: Store,
@@ -61,8 +62,8 @@ export class CommitsComponent implements OnInit {
     this.store.dispatch(new FetchCommits(sha)).pipe(
       withLatestFrom(this.commits$))
       .subscribe(([commits]) => {
-        console.log(commits);
-      },
+        this.transformCommits(commits);
+        },
         error => console.log(error)
       );
   }
@@ -73,8 +74,19 @@ export class CommitsComponent implements OnInit {
         const sha = this.router.url.split('/')[2];
         this.branches$.subscribe(branches => {
           this.currentBranch = branches.find(branch => branch.commit.sha === sha);
+          if (this.currentBranch) {
+            this.fetchCommits(this.currentBranch.commit.sha);
+          }
         });
       }
     });
+  }
+
+  transformCommits(commits: Observable<CommitModel[]>) {
+    const commitsForSort = from(commits);
+    this.sortedCommits$ = commitsForSort.pipe(
+      groupBy(commit => commit.commit.author.date),
+      mergeMap(group => group.pipe(toArray()))
+    ).subscribe(data => console.log(data));
   }
 }
