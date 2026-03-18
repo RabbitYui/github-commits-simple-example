@@ -1,24 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
+import { MatButtonToggleGroup, MatButtonToggle } from '@angular/material/button-toggle';
+import { MatAnchor } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-single-commit',
-  templateUrl: './single-commit.component.html',
-  styleUrls: ['./single-commit.component.scss']
+    selector: 'app-single-commit',
+    templateUrl: './single-commit.component.html',
+    styleUrls: ['./single-commit.component.scss'],
+    imports: [MatIcon, MatButtonToggleGroup, MatButtonToggle, MatAnchor, CommonModule],
+    standalone: true
 })
-export class SingleCommitComponent implements OnInit {
+export class SingleCommitComponent {
 
   showMore = false;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
   checkMore(): void {
-    if (this.showMore) {
-      this.showMore = false;
-    } else {
-      this.showMore = true;
-    }
+    this.showMore = !this.showMore;
   }
 }

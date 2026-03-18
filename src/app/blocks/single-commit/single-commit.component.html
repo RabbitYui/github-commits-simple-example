@@ -1,8 +1,13 @@
-<div class="commit-wrapper" fxLayout="column">
-  <div class="top-section" fxLayout="row" fxLayoutAlign="space-between start">
+<!--fxLayout="column"-->
+<div class="commit-wrapper">
+  <!--  fxLayout="row" fxLayoutAlign="space-between start"-->
+  <div class="top-section">
     <div class="header">
-      <h3><a href="">fix(ivy): error if directive with synthetic property binding is on sa…</a> <span class="more" (click)="checkMore()">...</span></h3>
-      <div class="commit-info" fxLayout="row" fxLayoutAlign="start">
+      <h3>
+        <span class="more" (click)="checkMore()">...</span>
+      </h3>
+      <!--      fxLayout="row" fxLayoutAlign="start"-->
+      <div class="commit-info">
         <div class="avatars">
           <div class="avatars-body">
             <a href="" class="avatar">
@@ -15,14 +20,16 @@
         </div>
         <div class="users-info">
           <span class="name">johndoe</span> authored and
-          <span class="name">bunny</span> commited 2 days ago <mat-icon class="check">check</mat-icon>
+          <span class="name">bunny</span> commited 2 days ago
+          <mat-icon class="check">check</mat-icon>
         </div>
       </div>
     </div>
     <div class="action-btns">
       <mat-button-toggle-group class="btn-group">
         <mat-button-toggle class="btn">
-          <svg class="octicon octicon-clippy" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true" fill="currentColor">
+          <svg class="octicon octicon-clippy" viewBox="0 0 14 16" version="1.1" width="14" height="16"
+               aria-hidden="true" fill="currentColor">
             <path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5
             9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55
             0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2
@@ -33,24 +40,21 @@
         <mat-button-toggle class="btn"><a href="">d6bc63f</a></mat-button-toggle>
       </mat-button-toggle-group>
       <a mat-flat-button class="btn action-btn">
-        <svg class="octicon octicon-code" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true" fill="currentColor">
-          <path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z">
+        <svg class="octicon octicon-code" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"
+             fill="currentColor">
+          <path fill-rule="evenodd"
+                d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z">
           </path>
         </svg>
       </a>
     </div>
   </div>
-  <div class="bottom-section" *ngIf="showMore">
+  @if (showMore) {
+    <div class="bottom-section">
     <pre class="text-small">
-…me node as directive that injects ViewContainerRef (<a class="link" href="">#35343</a>)
-
-In the `loadRenderer` we make an assumption that the value will always be an
-`LView`, but if there's a directive on the same node which injects
-`ViewContainerRef` the `LView` will be wrapped in an `LContainer`. These changes add a
-call to unwrap the value before we try to read the value off of it.
-
-<span class="key-word">Fixes <a class="link" href="">#35343</a></span>
-PR <span class="key-word">Close <a class="link" href="">#35343</a></span>
+      <span class="key-word">Fixes <a class="link" href="">#35343</a></span>
+      PR <span class="key-word">Close <a class="link" href="">#35343</a></span>
     </pre>
-  </div>
+    </div>
+  }
 </div>

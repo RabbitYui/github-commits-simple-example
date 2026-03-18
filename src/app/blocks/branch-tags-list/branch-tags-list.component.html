@@ -1,4 +1,3 @@
-
 <div class="branch-list-wrapper">
   <mat-list role="list">
     <mat-list-item class="list-item " role="listitem">
@@ -10,7 +9,9 @@
     <mat-list-item class="list-item" role="listitem" *ngFor="let branch of branches$ | async"
                    [ngClass]="branch.commit.sha === currentBranch.commit.sha? 'default': ''">
       <div [routerLink]="['/commits', branch.commit.sha]" (click)="switchActiveBranch(branch.commit.sha)">
-        <mat-icon *ngIf="branch.commit.sha === currentBranch.commit.sha" class="check">check</mat-icon>
+        @if (branch.commit.sha === currentBranch.commit.sha) {
+          <mat-icon class="check">check</mat-icon>
+        }
         {{branch.name}}
       </div>
     </mat-list-item>

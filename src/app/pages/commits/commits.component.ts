@@ -8,11 +8,16 @@ import { FetchBranches, FetchCommits } from '../../store/actions/commits.actions
 import { groupBy, mergeMap, toArray, withLatestFrom } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { CommitModel } from '../../models/commit.model';
+import { NgIf } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { CommitsSectionComponent } from '../../blocks/commits-section/commits-section.component';
 
 @Component({
-  selector: 'app-commits',
-  templateUrl: './commits.component.html',
-  styleUrls: ['./commits.component.scss']
+    selector: 'app-commits',
+    templateUrl: './commits.component.html',
+    styleUrls: ['./commits.component.scss'],
+    imports: [NgIf, MatIcon, CommitsSectionComponent],
+    standalone: true
 })
 export class CommitsComponent implements OnInit {
 
