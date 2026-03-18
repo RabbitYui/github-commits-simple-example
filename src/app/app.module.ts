@@ -18,32 +18,25 @@ import { BranchTagsListComponent } from './blocks/branch-tags-list/branch-tags-l
 import { MatListModule } from '@angular/material/list';
 import { NgxsModule } from '@ngxs/store';
 import { CommitsState } from './store/state/commits.state';
-import {HttpClientModule} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    SingleCommitComponent,
-    CommitsComponent,
-    CommitsSectionComponent,
-    SwitchBranchModalComponent,
-    BranchTagsListComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonToggleModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatTabsModule,
-    MatListModule,
-    NgxsModule.forRoot([CommitsState])
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        SingleCommitComponent,
+        CommitsComponent,
+        CommitsSectionComponent,
+        SwitchBranchModalComponent,
+        BranchTagsListComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonToggleModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatTabsModule,
+        MatListModule,
+        NgxsModule.forRoot([CommitsState])], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
