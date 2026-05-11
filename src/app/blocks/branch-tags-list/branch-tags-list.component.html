@@ -6,14 +6,16 @@
         <span class="default-label">default</span>
       </div>
     </mat-list-item>
-    <mat-list-item class="list-item" role="listitem" *ngFor="let branch of branches$ | async"
-                   [ngClass]="branch.commit.sha === currentBranch.commit.sha? 'default': ''">
-      <div [routerLink]="['/commits', branch.commit.sha]" (click)="switchActiveBranch(branch.commit.sha)">
-        @if (branch.commit.sha === currentBranch.commit.sha) {
-          <mat-icon class="check">check</mat-icon>
-        }
-        {{branch.name}}
-      </div>
-    </mat-list-item>
+    @for (branch of branches$ | async; track branch) {
+      <mat-list-item class="list-item" role="listitem"
+        [ngClass]="branch.commit.sha === currentBranch.commit.sha? 'default': ''">
+        <div [routerLink]="['/commits', branch.commit.sha]" (click)="switchActiveBranch(branch.commit.sha)">
+          @if (branch.commit.sha === currentBranch.commit.sha) {
+            <mat-icon class="check">check</mat-icon>
+          }
+          {{branch.name}}
+        </div>
+      </mat-list-item>
+    }
   </mat-list>
 </div>
